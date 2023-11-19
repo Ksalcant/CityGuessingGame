@@ -1,0 +1,30 @@
+[
+  {
+    "user": "Kaisel",
+    "points": 32
+  },
+  {
+    "user": "Antonella",
+    "points": 0
+  },
+  {
+    "user": "K",
+    "points": 0
+  },
+  {
+    "user": "lala",
+    "points": 0
+  },
+  {
+    "user": "kkkk",
+    "points": 0
+  },
+  {
+    "user": "2",
+    "points": 0
+  },
+  {
+    "user": "22",
+    "points": 0
+  }
+]
