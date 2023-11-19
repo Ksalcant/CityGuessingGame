@@ -1,5 +1,5 @@
 ##Demo
-<src=img<demo.gif/>
+![Demo GIF](demo.gif)
 
 This is a java program that uses gradle and java language. The server and client communicate with each other 
 through a TCP connection and a JSON protocol.
