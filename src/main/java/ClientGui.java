@@ -39,7 +39,7 @@ public class ClientGui implements OutputPanel.EventHandlers {
     OutputStream out;
     InputStream inputStream;
 
-    // TODO: SHOULD NOT BE HARDCODED
+    
     String host;
     int port;
     StringBuilder receivedData = new StringBuilder();
@@ -190,7 +190,7 @@ public class ClientGui implements OutputPanel.EventHandlers {
         try {
             picPanel.insertImage(byteArrayInputStream, row, col);
             // put status in output
-            // outputPanel.appendOutput("Inserting image in position (" + row + ", " + col + ")"); // you can of course remove this
+            // outputPanel.appendOutput("Inserting image in position (" + row + ", " + col + ")"); 
 
         } catch (PicturePanel.InvalidCoordinateException e) {
             // put error in output
@@ -406,7 +406,6 @@ public class ClientGui implements OutputPanel.EventHandlers {
     /**
      * Key listener for the input text box
      * <p>
-     * Change the behavior to whatever you need
      */
     @Override
     public void inputUpdated(String input) {
