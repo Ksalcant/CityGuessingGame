@@ -292,13 +292,7 @@ public final class SockServer {
                                 user.put("points", Gpoints);
                                 SockServer.addOrUpdateuser(leaderboard, user);
 
-                                response.put("key", 10);
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Paris par = new Paris();
-                                sendImg(par.Get1(), response);
-                                System.out.println("The answer is : Paris");
-                                break;
+                                Logic2(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
                                 response.put("key", 7);
@@ -309,16 +303,7 @@ public final class SockServer {
                                 System.out.println("The answer is : Ireland");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-
-                                response.put("key", 10);
-
-                                response.put("type", "play");
-                                Paris par = new Paris();
-                                sendImg(par.Get1(), response);
+                                Logic1(response);
                                 System.out.println("The answer is : Paris");
                                 break;
                             } else {
@@ -372,13 +357,7 @@ public final class SockServer {
                                 Gpoints += 3;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 10);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Paris ir = new Paris();
-                                sendImg(ir.Get1(), response);
-                                System.out.println("The answer is : Paris");
+                                Logic2(response);
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
@@ -408,14 +387,7 @@ public final class SockServer {
                                 Gpoints += 1;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 10);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Paris ir = new Paris();
-                                sendImg(ir.Get1(), response);
-                                System.out.println("The answer is : Paris");
-                                break;
+                                Logic2(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("key", 10);
 
@@ -445,13 +417,7 @@ public final class SockServer {
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
 
-                                response.put("key", 14);// now display 9
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Phoenix ph = new Phoenix();
-                                sendImg(ph.Get1(), response);
-                                System.out.println("The answer is : Phoenix");
-                                break;
+                                Logic4(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
                                 response.put("key", 11);
@@ -462,17 +428,7 @@ public final class SockServer {
                                 System.out.println("The answer is :  Paris");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-
-                                response.put("key", 14);// now display 9
-
-                                response.put("type", "play");
-                                Phoenix ph = new Phoenix();
-                                sendImg(ph.Get1(), response);
-                                System.out.println("The answer is : Phoenix");
+                                Logic3(response);
                                 break;
                             } else {
                                 response.put("key", 11);
@@ -489,13 +445,7 @@ public final class SockServer {
                                 Gpoints += 4;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 14);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Phoenix ph = new Phoenix();
-                                sendImg(ph.Get1(), response);
-                                System.out.println("The answer is : Phoenix");
+                                Logic4(response);
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
@@ -507,18 +457,7 @@ public final class SockServer {
                                 System.out.println("The answer is :  Paris");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 14);
-
-
-                                response.put("type", "play");
-                                Phoenix ph = new Phoenix();
-                                sendImg(ph.Get1(), response);
-                                System.out.println("The answer is : Phoenix");
-                                break;
+                                Logic3(response);
                             } else {
                                 response.put("key", 12);
 
@@ -534,14 +473,7 @@ public final class SockServer {
                                 Gpoints += 3;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 14);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Phoenix ph = new Phoenix();
-                                sendImg(ph.Get1(), response);
-                                System.out.println("The answer is : Phoenix");
-                                break;
+                                Logic4(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
                                 response.put("key", 13);
@@ -552,18 +484,7 @@ public final class SockServer {
                                 System.out.println("The answer is :  Paris");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 14);
-
-
-                                response.put("type", "play");
-                                Phoenix ph = new Phoenix();
-                                sendImg(ph.Get1(), response);
-                                System.out.println("The answer is : Phoenix");
-                                break;
+                                Logic3(response);
                             } else {
                                 response.put("key", 13);
 
@@ -579,14 +500,7 @@ public final class SockServer {
                                 Gpoints += 1;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 14);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Phoenix ph = new Phoenix();
-                                sendImg(ph.Get1(), response);
-                                System.out.println("The answer is : Phoenix");
-                                break;
+                                Logic4(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("key", 14);
 
@@ -597,18 +511,7 @@ public final class SockServer {
                                 System.out.println("The answer is : Phoenix");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 14);
-
-
-                                response.put("type", "play");
-                                Phoenix ph = new Phoenix();
-                                sendImg(ph.Get1(), response);
-                                System.out.println("The answer is : Phoenix");
-                                break;
+                                Logic3(response);
                             } else {
                                 response.put("key", 14);
 
@@ -624,13 +527,7 @@ public final class SockServer {
                                 Gpoints += 5;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 18);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Rome ro = new Rome();
-                                sendImg(ro.Get1(), response);
-                                System.out.println("The answer is : Rome");
+                                Logic6(response);
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
@@ -669,14 +566,7 @@ public final class SockServer {
                                 Gpoints += 4;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 18);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Rome ro = new Rome();
-                                sendImg(ro.Get1(), response);
-                                System.out.println("The answer is : Rome");
-                                break;
+                                Logic6(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
                                 response.put("key", 16);
@@ -687,17 +577,7 @@ public final class SockServer {
                                 System.out.println("The answer is :  Phoenix");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 18);
-
-
-                                response.put("type", "play");
-                                Rome ro = new Rome();
-                                sendImg(ro.Get1(), response);
-                                System.out.println("The answer is : Rome");
+                                Logic7(response);
                                 break;
                             } else {
                                 response.put("key", 16);
@@ -714,14 +594,7 @@ public final class SockServer {
                                 Gpoints += 3;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 18);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Rome ro = new Rome();
-                                sendImg(ro.Get1(), response);
-                                System.out.println("The answer is : Rome");
-                                break;
+                                Logic6(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
                                 response.put("key", 17);
@@ -732,18 +605,7 @@ public final class SockServer {
                                 System.out.println("The answer is :  Phoenix");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 18);
-
-
-                                response.put("type", "play");
-                                Rome ro = new Rome();
-                                sendImg(ro.Get1(), response);
-                                System.out.println("The answer is : Rome");
-                                break;
+                                Logic7(response);
 
                             } else {
                                 response.put("key", 17);
@@ -760,14 +622,7 @@ public final class SockServer {
                                 Gpoints += 1;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 18);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Rome ro = new Rome();
-                                sendImg(ro.Get1(), response);
-                                System.out.println("The answer is : Rome");
-                                break;
+                                Logic6(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("key", 18);
 
@@ -779,18 +634,7 @@ public final class SockServer {
                                 break;
 
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 18);
-
-
-                                response.put("type", "play");
-                                Rome ro = new Rome();
-                                sendImg(ro.Get1(), response);
-                                System.out.println("The answer is : Rome");
-                                break;
+                                Logic7(response);
 
                             } else {
                                 response.put("key", 18);
@@ -807,13 +651,7 @@ public final class SockServer {
                                 Gpoints += 5;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 22);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                SanFrancisco sf = new SanFrancisco();
-                                sendImg(sf.Get1(), response);
-                                System.out.println("The answer is : SanFrancisco");
+                                Logic8(response);
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
@@ -825,17 +663,7 @@ public final class SockServer {
                                 System.out.println("The answer is : Rome");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 22);
-
-
-                                response.put("type", "play");
-                                SanFrancisco sf = new SanFrancisco();
-                                sendImg(sf.Get1(), response);
-                                System.out.println("The answer is : SanFrancisco");
+                                Logic9(response);
                                 break;
 
                             } else {
@@ -854,14 +682,7 @@ public final class SockServer {
                                 Gpoints += 4;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 22);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                SanFrancisco sf = new SanFrancisco();
-                                sendImg(sf.Get1(), response);
-                                System.out.println("The answer is : SanFrancisco");
-                                break;
+                                Logic8(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
                                 response.put("key", 20);
@@ -872,18 +693,7 @@ public final class SockServer {
                                 System.out.println("The answer is : Rome");
                                 break;
                             } else if ("next".equalsIgnoreCase(clientmsg.getString("answer"))) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 22);
-
-
-                                response.put("type", "play");
-                                SanFrancisco sf = new SanFrancisco();
-                                sendImg(sf.Get1(), response);
-                                System.out.println("The answer is : SanFrancisco");
-                                break;
+                                Logic9(response);
 
                             } else {
                                 response.put("key", 20);
@@ -900,14 +710,7 @@ public final class SockServer {
                                 Gpoints += 3;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 22);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                SanFrancisco sf = new SanFrancisco();
-                                sendImg(sf.Get1(), response);
-                                System.out.println("The answer is : SanFrancisco");
-                                break;
+                                Logic8(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
                                 response.put("key", 21);
@@ -918,18 +721,7 @@ public final class SockServer {
                                 System.out.println("The answer is : Rome");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 22);
-
-
-                                response.put("type", "play");
-                                SanFrancisco sf = new SanFrancisco();
-                                sendImg(sf.Get1(), response);
-                                System.out.println("The answer is : SanFrancisco");
-                                break;
+                                Logic9(response);
 
                             } else {
                                 response.put("key", 21);
@@ -946,14 +738,7 @@ public final class SockServer {
                                 Gpoints += 1;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 22);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                SanFrancisco sf = new SanFrancisco();
-                                sendImg(sf.Get1(), response);
-                                System.out.println("The answer is : SanFrancisco");
-                                break;
+                                Logic8(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("key", 22);
 
@@ -965,18 +750,7 @@ public final class SockServer {
                                 break;
 
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 22);
-
-
-                                response.put("type", "play");
-                                SanFrancisco sf = new SanFrancisco();
-                                sendImg(sf.Get1(), response);
-                                System.out.println("The answer is : SanFrancisco");
-                                break;
+                                Logic9(response);
 
                             } else {
                                 response.put("key", 22);
@@ -993,13 +767,7 @@ public final class SockServer {
                                 Gpoints += 5;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 26);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Switzerland sz = new Switzerland();
-                                sendImg(sz.Get1(), response);
-                                System.out.println("The answer is : Switzerland");
+                                Logic10(response);
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
@@ -1011,17 +779,7 @@ public final class SockServer {
                                 System.out.println("The answer is : SanFrancisco");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 26);
-
-
-                                response.put("type", "play");
-                                Switzerland sz = new Switzerland();
-                                sendImg(sz.Get1(), response);
-                                System.out.println("The answer is : Switzerland");
+                                Logic11(response);
                                 break;
 
                             } else {
@@ -1040,14 +798,7 @@ public final class SockServer {
                                 Gpoints += 4;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 26);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Switzerland sz = new Switzerland();
-                                sendImg(sz.Get1(), response);
-                                System.out.println("The answer is : Switzerland");
-                                break;
+                                Logic10(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
                                 response.put("key", 24);
@@ -1058,18 +809,7 @@ public final class SockServer {
                                 System.out.println("The answer is : SanFrancisco");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 26);
-
-
-                                response.put("type", "play");
-                                Switzerland sz = new Switzerland();
-                                sendImg(sz.Get1(), response);
-                                System.out.println("The answer is : Switzerland");
-                                break;
+                                Logic11(response);
 
                             } else {
                                 response.put("key", 24);
@@ -1086,14 +826,7 @@ public final class SockServer {
                                 Gpoints += 3;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 26);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Switzerland sz = new Switzerland();
-                                sendImg(sz.Get1(), response);
-                                System.out.println("The answer is : Switzerland");
-                                break;
+                                Logic10(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("value", "You asked for more pictures? okay, try to guess this new one! ");
                                 response.put("key", 25);
@@ -1104,18 +837,7 @@ public final class SockServer {
                                 System.out.println("The answer is : SanFrancisco");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 26);
-
-
-                                response.put("type", "play");
-                                Switzerland sz = new Switzerland();
-                                sendImg(sz.Get1(), response);
-                                System.out.println("The answer is : Switzerland");
-                                break;
+                                Logic11(response);
 
                             } else {
                                 response.put("key", 25);
@@ -1132,14 +854,7 @@ public final class SockServer {
                                 Gpoints += 1;
                                 user.put("points", Gpoints);
                                 addOrUpdateuser(leaderboard, user);
-                                response.put("key", 26);
-
-                                response.put("value", "Which city is this?");
-                                response.put("type", "play");
-                                Switzerland sz = new Switzerland();
-                                sendImg(sz.Get1(), response);
-                                System.out.println("The answer is : Switzerland");
-                                break;
+                                Logic10(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
                                 response.put("key", 26);
 
@@ -1151,18 +866,7 @@ public final class SockServer {
                                 break;
 
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                response.put("value", "Skipt to the next city? Okay, then guess this one!");
-                                user.put("points", Gpoints);
-                                addOrUpdateuser(leaderboard, user);
-                                response.put("key", 26);
-
-
-                                response.put("type", "play");
-                                Switzerland sz = new Switzerland();
-                                sendImg(sz.Get1(), response);
-                                System.out.println("The answer is : Switzerland");
-                                break;
+                                Logic11(response);
                             } else {
                                 response.put("key", 26);
 
@@ -1315,17 +1019,136 @@ public final class SockServer {
         }
     }
 
-    private static void ReducePointsJumpTo10(JSONObject response) throws IOException {
+    private static void Logic11(JSONObject response) throws IOException {
+        Gpoints -= 4;
+        response.put("value", "Skip to the next city? Okay, then guess this one!");
+        user.put("points", Gpoints);
+        addOrUpdateuser(leaderboard, user);
+        response.put("key", 26);
+
+
+        response.put("type", "play");
+        Switzerland sz = new Switzerland();
+        sendImg(sz.Get1(), response);
+        System.out.println("The answer is : Switzerland");
+        return;
+    }
+
+    private static void Logic10(JSONObject response) throws IOException {
+        response.put("key", 26);
+
+        response.put("value", "Which city is this?");
+        response.put("type", "play");
+        Switzerland sz = new Switzerland();
+        sendImg(sz.Get1(), response);
+        System.out.println("The answer is : Switzerland");
+        return;
+    }
+
+    private static void Logic9(JSONObject response) throws IOException {
         Gpoints -= 4;
         response.put("value", "Skipt to the next city? Okay, then guess this one!");
         user.put("points", Gpoints);
         addOrUpdateuser(leaderboard, user);
-        response.put("key", 10);
+        response.put("key", 22);
 
 
         response.put("type", "play");
-        Paris par = new Paris(); // display ireland1
+        SanFrancisco sf = new SanFrancisco();
+        sendImg(sf.Get1(), response);
+        System.out.println("The answer is : SanFrancisco");
+        return;
+    }
+
+    private static void Logic8(JSONObject response) throws IOException {
+        response.put("key", 22);
+
+        response.put("value", "Which city is this?");
+        response.put("type", "play");
+        SanFrancisco sf = new SanFrancisco();
+        sendImg(sf.Get1(), response);
+        System.out.println("The answer is : SanFrancisco");
+        return;
+    }
+
+    private static void Logic7(JSONObject response) throws IOException {
+        Gpoints -= 4;
+        response.put("value", "Skipt to the next city? Okay, then guess this one!");
+        user.put("points", Gpoints);
+        addOrUpdateuser(leaderboard, user);
+        response.put("key", 18);
+
+
+        response.put("type", "play");
+        Rome ro = new Rome();
+        sendImg(ro.Get1(), response);
+        System.out.println("The answer is : Rome");
+        return;
+    }
+
+    private static void Logic6(JSONObject response) throws IOException {
+        response.put("key", 18);
+
+        response.put("value", "Which city is this?");
+        response.put("type", "play");
+        Rome ro = new Rome();
+        sendImg(ro.Get1(), response);
+        System.out.println("The answer is : Rome");
+        return;
+    }
+
+    private static void Logic4(JSONObject response) throws IOException {
+        response.put("key", 14);
+
+        response.put("value", "Which city is this?");
+        response.put("type", "play");
+        Phoenix ph = new Phoenix();
+        sendImg(ph.Get1(), response);
+        System.out.println("The answer is : Phoenix");
+        return;
+    }
+
+    private static void Logic3(JSONObject response) throws IOException {
+        Gpoints -= 4;
+        response.put("value", "Skipt to the next city? Okay, then guess this one!");
+        user.put("points", Gpoints);
+        addOrUpdateuser(leaderboard, user);
+
+        response.put("key", 14);// now display 9
+
+        response.put("type", "play");
+        Phoenix ph = new Phoenix();
+        sendImg(ph.Get1(), response);
+        System.out.println("The answer is : Phoenix");
+        return;
+    }
+
+    private static void Logic2(JSONObject response) throws IOException {
+        response.put("key", 10);
+
+        response.put("value", "Which city is this?");
+        response.put("type", "play");
+        Paris ir = new Paris();
+        sendImg(ir.Get1(), response);
+        System.out.println("The answer is : Paris");
+        return;
+    }
+
+    private static void Logic1(JSONObject response) throws IOException {
+        Gpoints -= 4;
+        response.put("value", "Skipt to the next city? Okay, then guess this one!");
+        user.put("points", Gpoints);
+        addOrUpdateuser(leaderboard, user);
+
+        response.put("key", 10);
+
+        response.put("type", "play");
+        Paris par = new Paris();
         sendImg(par.Get1(), response);
+    }
+
+    private static void ReducePointsJumpTo10(JSONObject response) throws IOException {
+        Logic1(response);
     }
 
     private static void ReducePointsJumpTo6(JSONObject response) throws IOException {
