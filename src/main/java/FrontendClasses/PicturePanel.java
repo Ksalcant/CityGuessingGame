@@ -1,3 +1,4 @@
+package FrontendClasses;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;

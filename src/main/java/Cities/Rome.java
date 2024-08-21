@@ -1,8 +1,9 @@
-public class Phoenix {
+package Cities;
+public class Rome {
     int points;
 
-    public Phoenix() {
-        this.points =0;
+    public Rome() {
+        this.points = 0;
     }
 
     void Gotfirst() {
@@ -25,20 +26,20 @@ public class Phoenix {
         return points;
     }
 
-    String Get1() {
-        return "img/phoenix1.jpg";
+    public String Get1() {
+        return "img/rome1.jpg";
     }
 
-    String Get2() {
-        return "img/phoenix2.jpg";
+    public String Get2() {
+        return "img/rome2.jpg";
     }
 
-    String Get3() {
-        return "img/phoenix3.jpg";
+    public String Get3() {
+        return "img/rome3.jpg";
     }
 
-    String Get4() {
-        return "img/phoenix4.jpg";
+    public String Get4() {
+        return "img/rome4.jpg";
     }
 }
 

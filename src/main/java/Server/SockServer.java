@@ -1,3 +1,5 @@
+package Server; 
+// import clients.*;
 import java.awt.image.BufferedImage;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -5,6 +7,8 @@ import java.nio.charset.StandardCharsets;
 import java.io.*;
 
 import org.json.*;
+
+import Cities.*;
 
 import javax.imageio.ImageIO;
 
@@ -86,10 +90,11 @@ public final class SockServer {
         }
 
         Socket sock;
+        ServerSocket serv=null;
         try {
 
             //opening the socket here, just hard coded since this is just a bas example
-            ServerSocket serv = new ServerSocket(SockServer.port); 
+            serv = new ServerSocket(SockServer.port); 
             System.out.println("Server ready for connetion");
 
             // placeholder for the person who wants to play a game
@@ -1016,6 +1021,9 @@ public final class SockServer {
             throw new RuntimeException(e);
         } catch (Exception e) {
             throw new RuntimeException(e);
+        } finally{
+            //serv.close();
+            //throw new IOException(e); 
         }
     }
 

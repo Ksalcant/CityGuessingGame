@@ -1,16 +1,10 @@
+package FrontendClasses;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.net.Socket;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Stack;
-
 import javax.imageio.ImageIO;
 
 /**

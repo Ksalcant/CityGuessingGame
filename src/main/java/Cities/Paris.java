@@ -1,3 +1,4 @@
+package Cities;
 public class Paris {
     int points;
 
@@ -5,39 +6,39 @@ public class Paris {
         this.points =0;
     }
 
-    void Gotfirst() {
+    public void Gotfirst() {
         this.points += 5;
     }
 
-    void Gotsecond() {
+    public void Gotsecond() {
         this.points += 4;
     }
 
-    void Gotthird() {
+    public void Gotthird() {
         this.points += 3;
     }
 
-    void Gotforth() {
+    public void Gotforth() {
         this.points += 1;
     }
 
-    int getPoints() {
+    public int getPoints() {
         return points;
     }
 
-    String Get1() {
+    public String Get1() {
         return "img/paris1.jpg";
     }
 
-    String Get2() {
+    public String Get2() {
         return "img/paris2.jpg";
     }
 
-    String Get3() {
+    public String Get3() {
         return "img/paris3.jpg";
     }
 
-    String Get4() {
+    public String Get4() {
         return "img/paris4.jpg";
     }
 }
