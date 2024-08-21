@@ -1,5 +1,4 @@
-package Server; 
-// import clients.*;
+package server; 
 import java.awt.image.BufferedImage;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -20,8 +19,9 @@ import javax.imageio.ImageIO;
 public final class SockServer {
     static int port = 8888;
     private static boolean playing = false;
-    private static int Gpoints = 0;
+    private static int gpoints = 0;
     static String name = "";
+    private static final String pointsKey = "points";
 
     ////////////////////////////////////////////////////////////////Create a static variable to hold the leaderboard
     private static final String FILENAME = "board/leader.txt";
@@ -56,13 +56,13 @@ public final class SockServer {
     static void addOrUpdateuser(JSONArray leaderboard, JSONObject newUser) {
         try {
             String username = newUser.getString("user");
-            int points = newUser.getInt("points");
+            int points = newUser.getInt(pointsKey);
 
             for (int i = 0; i < leaderboard.length(); i++) {
                 JSONObject player = leaderboard.getJSONObject(i);
                 if (player.getString("user").equals(username)) {
-                    if (points > player.getInt("points")) {
-                        player.put("points", points);
+                    if (points > player.getInt(pointsKey)) {
+                        player.put(pointsKey, points);
                     }
                     return;
                 }
@@ -126,8 +126,8 @@ public final class SockServer {
                     /////////////////////////////////////////////////////////	//add new person with name to the leaderboard.
 
                     user.put("user", name);
-                    Gpoints = 0;
-                    user.put("points", Gpoints);
+                    gpoints = 0;
+                    user.put(pointsKey, gpoints);
                     addOrUpdateuser(leaderboard, user);
                     saveLeaderboard(leaderboard);
 
@@ -167,8 +167,8 @@ public final class SockServer {
                             break;
                         case 2:
                             if (clientmsg.getString("answer").equalsIgnoreCase("berlin")) {
-                                Gpoints += 5;
-                                user.put("points", Gpoints);
+                                gpoints += 5;
+                                user.put(pointsKey, gpoints);
                                 SockServer.addOrUpdateuser(leaderboard, user);
 
                                 Block6(response);
@@ -183,8 +183,8 @@ public final class SockServer {
                                 System.out.println("The answer is : Berlin");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                user.put("points", Gpoints);
+                                gpoints -= 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
 
                                 response.put("key", 6);
@@ -207,8 +207,8 @@ public final class SockServer {
                             }
                         case 3:
                             if (clientmsg.getString("answer").equalsIgnoreCase("berlin")) {
-                                Gpoints += 4;
-                                user.put("points", Gpoints);
+                                gpoints += 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
 
                                 Block6(response);
@@ -238,8 +238,8 @@ public final class SockServer {
                         case 4:
                             if (clientmsg.getString("answer").equalsIgnoreCase("berlin")) {
 
-                                Gpoints += 3;
-                                user.put("points", Gpoints);
+                                gpoints += 3;
+                                user.put(pointsKey, gpoints);
                                 SockServer.addOrUpdateuser(leaderboard, user);
                                 Block6(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -265,8 +265,8 @@ public final class SockServer {
                             }
                         case 5:
                             if (clientmsg.getString("answer").equalsIgnoreCase("berlin")) {
-                                Gpoints += 1;
-                                user.put("points", Gpoints);
+                                gpoints += 1;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
 
                                 Block6(response);
@@ -293,8 +293,8 @@ public final class SockServer {
                             }
                         case 6://////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             if (clientmsg.getString("answer").equalsIgnoreCase("ireland")) {
-                                Gpoints += 5;
-                                user.put("points", Gpoints);
+                                gpoints += 5;
+                                user.put(pointsKey, gpoints);
                                 SockServer.addOrUpdateuser(leaderboard, user);
 
                                 Logic2(response);
@@ -323,8 +323,8 @@ public final class SockServer {
                             }
                         case 7:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Ireland")) {
-                                Gpoints += 4;
-                                user.put("points", Gpoints);
+                                gpoints += 4;
+                                user.put(pointsKey, gpoints);
                                 SockServer.addOrUpdateuser(leaderboard, user);
                                 response.put("key", 10);
 
@@ -359,8 +359,8 @@ public final class SockServer {
                             }
                         case 8:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Ireland")) {
-                                Gpoints += 3;
-                                user.put("points", Gpoints);
+                                gpoints += 3;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic2(response);
                                 break;
@@ -389,8 +389,8 @@ public final class SockServer {
                             }
                         case 9:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Ireland")) {
-                                Gpoints += 1;
-                                user.put("points", Gpoints);
+                                gpoints += 1;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic2(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -418,8 +418,8 @@ public final class SockServer {
                             }
                         case 10://////////////////////////////////////////////////////////////////////
                             if (clientmsg.getString("answer").equalsIgnoreCase("Paris")) {
-                                Gpoints += 5;
-                                user.put("points", Gpoints);
+                                gpoints += 5;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
 
                                 Logic4(response);
@@ -447,8 +447,8 @@ public final class SockServer {
                             }
                         case 11:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Paris")) {
-                                Gpoints += 4;
-                                user.put("points", Gpoints);
+                                gpoints += 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic4(response);
                                 break;
@@ -475,8 +475,8 @@ public final class SockServer {
                             }
                         case 12:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Paris")) {
-                                Gpoints += 3;
-                                user.put("points", Gpoints);
+                                gpoints += 3;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic4(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -502,8 +502,8 @@ public final class SockServer {
                             }
                         case 13:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Paris")) {
-                                Gpoints += 1;
-                                user.put("points", Gpoints);
+                                gpoints += 1;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic4(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -529,8 +529,8 @@ public final class SockServer {
                             }
                         case 14:///////////////////////////////////////////////////////////////////////////////////////////////////////////
                             if (clientmsg.getString("answer").equalsIgnoreCase("Phoenix")) {
-                                Gpoints += 5;
-                                user.put("points", Gpoints);
+                                gpoints += 5;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic6(response);
                                 break;
@@ -544,8 +544,8 @@ public final class SockServer {
                                 System.out.println("The answer is :  Phoenix");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                user.put("points", Gpoints);
+                                gpoints -= 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 response.put("key", 18);
 
@@ -568,8 +568,8 @@ public final class SockServer {
 
                         case 15:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Phoenix")) {
-                                Gpoints += 4;
-                                user.put("points", Gpoints);
+                                gpoints += 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic6(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -596,8 +596,8 @@ public final class SockServer {
                             }
                         case 16:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Phoenix")) {
-                                Gpoints += 3;
-                                user.put("points", Gpoints);
+                                gpoints += 3;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic6(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -624,8 +624,8 @@ public final class SockServer {
                             }
                         case 17:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Phoenix")) {
-                                Gpoints += 1;
-                                user.put("points", Gpoints);
+                                gpoints += 1;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic6(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -653,8 +653,8 @@ public final class SockServer {
                             }
                         case 18:////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             if (clientmsg.getString("answer").equalsIgnoreCase("Rome")) {
-                                Gpoints += 5;
-                                user.put("points", Gpoints);
+                                gpoints += 5;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic8(response);
                                 break;
@@ -684,8 +684,8 @@ public final class SockServer {
 
                         case 19:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Rome")) {
-                                Gpoints += 4;
-                                user.put("points", Gpoints);
+                                gpoints += 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic8(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -712,8 +712,8 @@ public final class SockServer {
                             }
                         case 20:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Rome")) {
-                                Gpoints += 3;
-                                user.put("points", Gpoints);
+                                gpoints += 3;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic8(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -740,8 +740,8 @@ public final class SockServer {
                             }
                         case 21:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Rome")) {
-                                Gpoints += 1;
-                                user.put("points", Gpoints);
+                                gpoints += 1;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic8(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -769,8 +769,8 @@ public final class SockServer {
                             }
                         case 22://////////////////////////////////////////////////////////////////////////////////////////////////
                             if (clientmsg.getString("answer").equalsIgnoreCase("SanFrancisco")) {
-                                Gpoints += 5;
-                                user.put("points", Gpoints);
+                                gpoints += 5;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic10(response);
                                 break;
@@ -800,8 +800,8 @@ public final class SockServer {
 
                         case 23:
                             if (clientmsg.getString("answer").equalsIgnoreCase("SanFrancisco")) {
-                                Gpoints += 4;
-                                user.put("points", Gpoints);
+                                gpoints += 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic10(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -828,8 +828,8 @@ public final class SockServer {
                             }
                         case 24:
                             if (clientmsg.getString("answer").equalsIgnoreCase("SanFrancisco")) {
-                                Gpoints += 3;
-                                user.put("points", Gpoints);
+                                gpoints += 3;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic10(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -856,8 +856,8 @@ public final class SockServer {
                             }
                         case 25:
                             if (clientmsg.getString("answer").equalsIgnoreCase("SanFrancisco")) {
-                                Gpoints += 1;
-                                user.put("points", Gpoints);
+                                gpoints += 1;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 Logic10(response);
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("more")) {
@@ -884,14 +884,14 @@ public final class SockServer {
                             }
                         case 26://////////////////////////////////////////////////////////////////////////////////////////////////////////
                             if (clientmsg.getString("answer").equalsIgnoreCase("Switzerland")) {
-                                Gpoints += 5;
-                                user.put("points", Gpoints);
+                                gpoints += 5;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 WonOrLose(response, "Great job! Look above to see if you won.\n" + "Type your name to play again");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                user.put("points", Gpoints);
+                                gpoints -= 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 WonOrLose(response, "That was the last city. Look above to see if you won.\n" + "Type your name to play again");
                                 break;
@@ -917,14 +917,14 @@ public final class SockServer {
 
                         case 27:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Switzerland")) {
-                                Gpoints += 4;
-                                user.put("points", Gpoints);
+                                gpoints += 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 WonOrLose(response, "Great job! Look above to see if you won.\n" + "Type your name to play again");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                user.put("points", Gpoints);
+                                gpoints -= 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 WonOrLose(response, "That was the last city. Look above to see if you won.\n" + "Type your name to play again");
                                 break;
@@ -949,8 +949,8 @@ public final class SockServer {
                             }
                         case 28:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Switzerland")) {
-                                Gpoints += 3;
-                                user.put("points", Gpoints);
+                                gpoints += 3;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 WonOrLose(response, "Great job! Look above to see if you won.\n" + "Type your name to play again");
                                 break;
@@ -964,8 +964,8 @@ public final class SockServer {
                                 System.out.println("The answer is : Switzerland");
                                 break;
                             } else if (clientmsg.getString("answer").equalsIgnoreCase("next")) {
-                                Gpoints -= 4;
-                                user.put("points", Gpoints);
+                                gpoints -= 4;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 WonOrLose(response, "That was the last city. Look above to see if you won.\n" + "Type your name to play again");
                                 break;
@@ -981,8 +981,8 @@ public final class SockServer {
                             }
                         case 29:
                             if (clientmsg.getString("answer").equalsIgnoreCase("Switzerland")) {
-                                Gpoints += 1;
-                                user.put("points", Gpoints);
+                                gpoints += 1;
+                                user.put(pointsKey, gpoints);
                                 addOrUpdateuser(leaderboard, user);
                                 WonOrLose(response, "Great job! Look above to see if you won.\n" + "Type your name to play again");
                                 break;
@@ -1004,7 +1004,7 @@ public final class SockServer {
                     response.put("value", "unknown response");
                     sendImg("img/questions.jpg", response);
                 }
-                response.put("points", Gpoints);
+                response.put(pointsKey, gpoints);
                 response.put("name", name);
                 response.put("playing",playing);
                 String jsonString = response.toString() + "\n";
@@ -1028,9 +1028,9 @@ public final class SockServer {
     }
 
     private static void Logic11(JSONObject response) throws IOException {
-        Gpoints -= 4;
+        gpoints -= 4;
         response.put("value", "Skip to the next city? Okay, then guess this one!");
-        user.put("points", Gpoints);
+        user.put(pointsKey, gpoints);
         addOrUpdateuser(leaderboard, user);
         response.put("key", 26);
 
@@ -1054,9 +1054,9 @@ public final class SockServer {
     }
 
     private static void Logic9(JSONObject response) throws IOException {
-        Gpoints -= 4;
+        gpoints -= 4;
         response.put("value", "Skipt to the next city? Okay, then guess this one!");
-        user.put("points", Gpoints);
+        user.put(pointsKey, gpoints);
         addOrUpdateuser(leaderboard, user);
         response.put("key", 22);
 
@@ -1080,9 +1080,9 @@ public final class SockServer {
     }
 
     private static void Logic7(JSONObject response) throws IOException {
-        Gpoints -= 4;
+        gpoints -= 4;
         response.put("value", "Skipt to the next city? Okay, then guess this one!");
-        user.put("points", Gpoints);
+        user.put(pointsKey, gpoints);
         addOrUpdateuser(leaderboard, user);
         response.put("key", 18);
 
@@ -1117,9 +1117,9 @@ public final class SockServer {
     }
 
     private static void Logic3(JSONObject response) throws IOException {
-        Gpoints -= 4;
+        gpoints -= 4;
         response.put("value", "Skipt to the next city? Okay, then guess this one!");
-        user.put("points", Gpoints);
+        user.put(pointsKey, gpoints);
         addOrUpdateuser(leaderboard, user);
 
         response.put("key", 14);// now display 9
@@ -1143,9 +1143,9 @@ public final class SockServer {
     }
 
     private static void Logic1(JSONObject response) throws IOException {
-        Gpoints -= 4;
+        gpoints -= 4;
         response.put("value", "Skipt to the next city? Okay, then guess this one!");
-        user.put("points", Gpoints);
+        user.put(pointsKey, gpoints);
         addOrUpdateuser(leaderboard, user);
 
         response.put("key", 10);
@@ -1160,9 +1160,9 @@ public final class SockServer {
     }
 
     private static void ReducePointsJumpTo6(JSONObject response) throws IOException {
-        Gpoints -= 4;
+        gpoints -= 4;
         response.put("value", "Skipt to the next city? Okay, then guess this one!");
-        user.put("points", Gpoints);
+        user.put(pointsKey, gpoints);
         addOrUpdateuser(leaderboard, user);
 
         response.put("key", 6);
@@ -1195,9 +1195,9 @@ public final class SockServer {
     }
 
     public static void WonOrLose(JSONObject response, String val) throws JSONException, IOException {
-        if (user.getInt("points") > 12) {
+        if (user.getInt(pointsKey) > 12) {
             sendImg("img/win.jpg", response);
-        } else if (user.getInt("points") < -3) {
+        } else if (user.getInt(pointsKey) < -3) {
             sendImg("img/lose.jpg", response);
         } else {
             sendImg("img/questions.jpg", response);
@@ -1219,7 +1219,7 @@ public final class SockServer {
         String hold = "*********LEADERBOARD*********\n";
         for (int i = 0; i < leaderboard.length(); i++) {
             player = leaderboard.getJSONObject(i);
-            hold += player.getString("user") + ": " + player.getInt("points") + "\n";
+            hold += player.getString("user") + ": " + player.getInt(pointsKey) + "\n";
         }
 
         hold += "*************************************\n";

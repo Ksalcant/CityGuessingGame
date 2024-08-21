@@ -187,7 +187,7 @@ public class ClientGui implements OutputPanel.EventHandlers {
 
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imageData);
 
-        String error = "";
+       
         try {
             picPanel.insertImage(byteArrayInputStream, row, col);
             // put status in output
@@ -195,8 +195,8 @@ public class ClientGui implements OutputPanel.EventHandlers {
 
         } catch (PicturePanel.InvalidCoordinateException e) {
             // put error in output
-            error = "Invalid coordinates. or image object";
-            //error = e.toString();
+            //e.printStack();
+             e.toString();
 
         }
 
